@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="5b8725520f0d0f50d1e3efc530d1b209" sys_domain="global" table="x_704340_der_site" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>site_id</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:41:08</sys_created_on>
+            <sys_id>1639e9160f0d0f50d1e3efc530d1b2ed</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_704340_der_site" sys_domain="global" view="Default view">5b8725520f0d0f50d1e3efc530d1b209</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:41:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>street_address</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:41:08</sys_created_on>
+            <sys_id>1e39e9160f0d0f50d1e3efc530d1b2ee</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_704340_der_site" sys_domain="global" view="Default view">5b8725520f0d0f50d1e3efc530d1b209</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:41:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>city</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:41:08</sys_created_on>
+            <sys_id>96392d160f0d0f50d1e3efc530d1b2e8</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_704340_der_site" sys_domain="global" view="Default view">5b8725520f0d0f50d1e3efc530d1b209</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:41:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>province</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:41:09</sys_created_on>
+            <sys_id>26392d160f0d0f50d1e3efc530d1b2e9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_704340_der_site" sys_domain="global" view="Default view">5b8725520f0d0f50d1e3efc530d1b209</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:41:09</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>postal_code</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:41:09</sys_created_on>
+            <sys_id>a2392d160f0d0f50d1e3efc530d1b2ea</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_704340_der_site" sys_domain="global" view="Default view">5b8725520f0d0f50d1e3efc530d1b209</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:41:09</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:41:09</sys_created_on>
+            <sys_id>22392d160f0d0f50d1e3efc530d1b2eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_704340_der_site" sys_domain="global" view="Default view">5b8725520f0d0f50d1e3efc530d1b209</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:41:09</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>application</element>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:41:09</sys_created_on>
+            <sys_id>ae392d160f0d0f50d1e3efc530d1b2eb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_704340_der_site" sys_domain="global" view="Default view">5b8725520f0d0f50d1e3efc530d1b209</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:41:09</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>total_site_generation_ac</element>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:41:09</sys_created_on>
+            <sys_id>2e392d160f0d0f50d1e3efc530d1b2ec</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_704340_der_site" sys_domain="global" view="Default view">5b8725520f0d0f50d1e3efc530d1b209</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:41:09</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>microgen_wires_interconnection</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:41:10</sys_created_on>
+            <sys_id>ba392d160f0d0f50d1e3efc530d1b2ed</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_704340_der_site" sys_domain="global" view="Default view">5b8725520f0d0f50d1e3efc530d1b209</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:41:10</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_704340_der_site</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2026-05-26 13:33:51</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>5b8725520f0d0f50d1e3efc530d1b209</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_704340_der_site</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="DER" source="x_704340_der">e17bbc520fc50f50d1e3efc530d1b244</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="DER">e17bbc520fc50f50d1e3efc530d1b244</sys_scope>
+            <sys_update_name>sys_ui_section_5b8725520f0d0f50d1e3efc530d1b209</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2026-05-26 13:33:51</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

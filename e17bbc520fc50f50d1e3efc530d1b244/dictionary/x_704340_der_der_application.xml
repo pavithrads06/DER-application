@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="d49385120f090f50d1e3efc530d1b2bd" label="DER application" max_length="40" name="x_704340_der_der_application" type="collection">
+        <element label="Site" max_length="32" name="site" reference="x_704340_der_site" type="reference"/>
+        <element label="Approvers" max_length="1024" name="approvers" reference="sys_user_group" type="glide_list"/>
+        <element label="Customer" max_length="40" name="customer" type="string"/>
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" display="true" label="Number" max_length="40" name="number" type="string"/>
+        <element label="Transformer" max_length="40" name="transformer" type="string"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <element choice="3" label="DER state" max_length="40" name="der_state" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Cancelled" sequence="4" value="cancelled"/>
+                <element inactive_on_update="false" label="Awaiting Stakeholder approval" sequence="1" value="awaiting_stakeholder_approval"/>
+                <element inactive_on_update="false" label="Ready to commission" sequence="2" value="ready_to_commission"/>
+                <element inactive_on_update="false" label="New" sequence="0" value="new"/>
+                <element inactive_on_update="false" label="Commissioned" sequence="3" value="commissioned"/>
+            </choice>
+        </element>
+        <element choice="3" label="Approval" max_length="40" name="approval" type="choice">
+            <choice>
+                <element inactive_on_update="false" label="Requested" sequence="1" value="requested"/>
+                <element inactive_on_update="false" label="Rejected" sequence="3" value="rejected"/>
+                <element inactive_on_update="false" label="Not yet requested" sequence="0" value="not_yet_requested"/>
+                <element inactive_on_update="false" label="No longer required" sequence="4" value="no_longer_required"/>
+                <element inactive_on_update="false" label="Approved" sequence="2" value="approved"/>
+            </choice>
+        </element>
+        <element label="Project Number" max_length="40" name="project_number" type="string"/>
+        <element label="Consultant" max_length="40" name="consultant" type="string"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

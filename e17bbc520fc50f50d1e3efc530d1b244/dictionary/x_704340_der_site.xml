@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="02e5655e0fc90f50d1e3efc530d1b22c" label="Site" max_length="40" name="x_704340_der_site" type="collection">
+        <element display="true" label="Site ID" max_length="40" name="site_id" type="string"/>
+        <element label="MicroGen Wires Interconnection" max_length="40" name="microgen_wires_interconnection" type="boolean"/>
+        <element label="Street address" max_length="40" name="street_address" type="string"/>
+        <element label="Application" max_length="32" name="application" reference="x_704340_der_der_application" type="reference"/>
+        <element label="Province" max_length="40" name="province" type="string"/>
+        <element label="Total Site Generation (AC)" max_length="40" name="total_site_generation_ac" type="float"/>
+        <element label="City" max_length="40" name="city" type="string"/>
+        <element label="Postal code" max_length="40" name="postal_code" type="string"/>
+        <index name="index">
+            <element name="application"/>
+        </index>
+    </element>
+</database>

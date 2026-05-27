@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>POST</http_method>
+        <name>Create DER application</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+    // 1. Parse the incoming JSON body from Postman
+    var requestBody = request.body.data;
+    
+    // Fallback if data isn't automatically parsed
+    if (typeof requestBody === 'string') {
+        requestBody = JSON.parse(requestBody);
+    }
+    
+    // Extract Application and Site data from payload
+    var appData = requestBody.application_data;
+    var siteData = requestBody.site_data;
+    
+    if (!appData || !siteData) {
+        return new sn_ws_err.BadRequestError("Missing application_data or site_data in payload.");
+    }
+    
+    try {
+        // 2. Create the Site Record First
+        var siteGr = new GlideRecord('x_704340_der_site');
+        siteGr.initialize();
+        
+        // Map fields from payload to Site table
+        if (siteData.site_id) siteGr.setValue('site_id', siteData.site_id);
+        if (siteData.street_address) siteGr.setValue('street_address', siteData.street_address);
+        if (siteData.city) siteGr.setValue('city', siteData.city);
+        if (siteData.province) siteGr.setValue('province', siteData.province);
+        if (siteData.postal_code) siteGr.setValue('postal_code', siteData.postal_code);
+        if (siteData.total_site_generation) siteGr.setValue('total_site_generation_ac', siteData.total_site_generation);
+        if (siteData.microgen_wires_interconnection) siteGr.setValue('microgen_wires_interconnection', siteData.microgen_wires_interconnection);
+        
+        var siteSysId = siteGr.insert();
+        if (!siteSysId) {
+            return new sn_ws_err.InternalError("Failed to create Site record.");
+        }
+        
+        // 3. Create the DER Application Record and reference the Site immediately
+        var appGr = new GlideRecord('x_704340_der_der_application');
+        appGr.initialize();
+        
+        // Map fields for application
+        if (appData.project_number) appGr.setValue('project_number', appData.project_number);
+        
+        // Link the newly created Site directly before doing the application insert
+        appGr.setValue('site', siteSysId);
+        
+        var appSysId = appGr.insert();
+        if (!appSysId) {
+            return new sn_ws_err.InternalError("Failed to create Application record.");
+        }
+        
+        // 4. Update the Site record with the Application reference
+        // (Since your original code had a bi-directional link where both referenced each other)
+        siteGr.initialize(); 
+        if (siteGr.get(siteSysId)) {
+            siteGr.setValue('application', appSysId);
+            siteGr.update();
+        }
+        
+        // 5. Send successful response back to Postman
+        var responseBody = {
+            "status": "Success",
+            "message": "Records created and linked successfully",
+            "application_sys_id": appSysId,
+            "site_sys_id": siteSysId
+        };
+        response.setBody(responseBody);
+        response.setStatus(201); // 201 Created
+        
+    } catch (ex) {
+        return new sn_ws_err.InternalError("An error occurred: " + ex.message);
+    }
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_704340_der/der_integration/create</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/create</relative_path>
+        <request_example/>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-05-26 14:16:40</sys_created_on>
+        <sys_id>26bf6d120f4d0f50d1e3efc530d1b2d7</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Create DER application</sys_name>
+        <sys_package display_value="DER" source="x_704340_der">e17bbc520fc50f50d1e3efc530d1b244</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DER">e17bbc520fc50f50d1e3efc530d1b244</sys_scope>
+        <sys_update_name>sys_ws_operation_26bf6d120f4d0f50d1e3efc530d1b2d7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-05-26 15:09:30</sys_updated_on>
+        <web_service_definition display_value="DER Integration">bd8e299e0f0d0f50d1e3efc530d1b2e9</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>
