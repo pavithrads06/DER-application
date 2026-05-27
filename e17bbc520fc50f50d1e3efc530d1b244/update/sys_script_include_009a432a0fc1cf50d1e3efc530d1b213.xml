@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_704340_der.DERPayloadParser</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>DERPayloadParser</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var DERPayloadParser = Class.create();
+DERPayloadParser.prototype = {
+    initialize: function() {
+        this.payloadTable = 'x_704340_der_der_payload';
+        this.siteTable    = 'x_704340_der_site';
+        this.appTable     = 'x_704340_der_der_application';
+    },
+
+    /**
+     * Parses a payload record string and builds the related Site and Application records.
+     * @param {GlideRecord} payloadGr - The current record from x_704340_der_der_payload
+     */
+    parseAndProcess: function(payloadGr) {
+        var rawString = payloadGr.getValue('payload');
+        if (!rawString) {
+            gs.error("DERPayloadParser: Payload field is empty for record " + payloadGr.getUniqueValue());
+            return;
+        }
+
+        try {
+            var payload = JSON.parse(rawString);
+            var appData = payload.application_data;
+            var siteData = payload.site_data;
+
+            if (!appData || !siteData) {
+                gs.error("DERPayloadParser: Missing application_data or site_data in payload string.");
+                return;
+            }
+
+            // 1. Create the Site Record
+            var siteGr = new GlideRecord(this.siteTable);
+            siteGr.initialize();
+            if (siteData.site_id) siteGr.setValue('site_id', siteData.site_id);
+            if (siteData.street_address) siteGr.setValue('street_address', siteData.street_address);
+            if (siteData.city) siteGr.setValue('city', siteData.city);
+            if (siteData.province) siteGr.setValue('province', siteData.province);
+            if (siteData.postal_code) siteGr.setValue('postal_code', siteData.postal_code);
+            if (siteData.total_site_generation) siteGr.setValue('total_site_generation_ac', siteData.total_site_generation);
+            if (siteData.microgen_wires_interconnection !== undefined) {
+                siteGr.setValue('microgen_wires_interconnection', siteData.microgen_wires_interconnection);
+            }
+            var siteSysId = siteGr.insert();
+
+            if (!siteSysId) {
+                gs.error("DERPayloadParser: Failed to insert Site record.");
+                return;
+            }
+
+            // 2. Create the Application Record and link it to the Site
+            var appGr = new GlideRecord(this.appTable);
+            appGr.initialize();
+            if (appData.project_number) appGr.setValue('project_number', appData.project_number);
+            
+            // Set reference to the newly created Site
+            appGr.setValue('site', siteSysId); 
+            var appSysId = appGr.insert();
+
+            if (!appSysId) {
+                gs.error("DERPayloadParser: Failed to insert Application record.");
+                return;
+            }
+
+            // 3. Complete the Bi-directional link back on the Site record
+            // Wrapping this in a separate GlideRecord ensures no recursive loops run wild
+            var updateSiteGr = new GlideRecord(this.siteTable);
+            if (updateSiteGr.get(siteSysId)) {
+                updateSiteGr.setValue('application', appSysId);
+                // Disable workflow if you have business rules on Site that might loop back to App
+                updateSiteGr.setWorkflow(false); 
+                updateSiteGr.update();
+            }
+
+            gs.info("DERPayloadParser: Successfully processed payload. App: " + appSysId + " | Site: " + siteSysId);
+
+        } catch (e) {
+            gs.error("DERPayloadParser: Exception caught while parsing payload JSON. Error: " + e.message);
+        }
+    },
+
+    type: 'DERPayloadParser'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2026-05-27 15:26:16</sys_created_on>
+        <sys_id>009a432a0fc1cf50d1e3efc530d1b213</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>DERPayloadParser</sys_name>
+        <sys_package display_value="DER" source="x_704340_der">e17bbc520fc50f50d1e3efc530d1b244</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="DER">e17bbc520fc50f50d1e3efc530d1b244</sys_scope>
+        <sys_update_name>sys_script_include_009a432a0fc1cf50d1e3efc530d1b213</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2026-05-27 15:26:16</sys_updated_on>
+    </sys_script_include>
+</record_update>
